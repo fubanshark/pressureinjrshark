@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>คัดกรองแผลกดทับ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@500;600&family=Sarabun:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-screening">
+
+  <header class="topbar">
+    <a href="index.html" class="back">
+      <span class="back-icon">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M9 14 4 9l5-5"/>
+          <path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/>
+        </svg>
+      </span>
+      ย้อนกลับ
+    </a>
+  </header>
+
+  <main class="screen">
+
+    <!-- ===== มุมมอง 1: เลือกรูป ===== -->
+    <section id="viewForm">
+      <h1>ระบบประเมินแผลกดทับด้วย AI</h1>
+
+      <ol class="steps">
+        <li>ถ่ายรูปหรืออัปโหลดรูปแผล</li>
+        <li>กดปุ่ม "วิเคราะห์แผล" แล้วรอสักครู่</li>
+        <li>รับผลคัดกรองเบื้องต้นจาก AI</li>
+      </ol>
+
+      <div class="photo-area" id="photoArea">
+
+        <div id="toast" class="toast" role="status" hidden>
+          <span>เลือกรูปเรียบร้อยแล้ว</span>
+          <span class="toast-check">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12.5l4.5 4.5L19 7.5"/>
+            </svg>
+          </span>
+        </div>
+
+        <div class="empty-state" id="emptyState">
+          <input type="file" id="cameraInput" class="visually-hidden" accept="image/*" capture="environment">
+          <label for="cameraInput" class="pick-btn pick-main">
+            <span class="pick-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 8h3l2-3h6l2 3h3v11H4z"/>
+                <circle cx="12" cy="13" r="3.5"/>
+              </svg>
+            </span>
+            ถ่ายรูป
+          </label>
+
+          <input type="file" id="imageInput" class="visually-hidden" accept="image/jpeg,image/png">
+          <label for="imageInput" class="pick-btn pick-sub">
+            <span class="pick-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 16V5"/>
+                <path d="M7 9l5-5 5 5"/>
+                <path d="M5 20h14"/>
+              </svg>
+            </span>
+            อัปโหลดรูป
+          </label>
+        </div>
+
+        <img id="preview" class="preview" alt="ภาพตัวอย่างที่เลือก" hidden>
+
+        <button type="button" id="clearBtn" class="clear-btn" aria-label="ลบรูปที่เลือก" hidden>
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18"/>
+          </svg>
+        </button>
+
+      </div>
+
+      <button type="button" id="analyzeBtn" class="analyze-btn" disabled>วิเคราะห์แผล</button>
+      <p id="status" class="status" aria-live="polite"></p>
+
+      <p class="notice">
+        <span class="notice-icon" aria-hidden="true">i</span>
+        <span>เครื่องมือช่วยคัดกรองเบื้องต้น ใช้กับแผลกดทับเท่านั้น ไม่ใช่การวินิจฉัยของแพทย์</span>
+      </p>
+    </section>
+
+    <!-- ===== มุมมอง 2: กำลังวิเคราะห์ ===== -->
+    <section id="viewLoading" hidden>
+      <div class="ai-head">
+        <span class="ai-badge">
+          <svg class="catbot" viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path class="cat-ear cat-ear-l" d="M5.4 8.4 L5.8 3.8 L10 7.6"/>
+            <path class="cat-ear cat-ear-r" d="M18.6 8.4 L18.2 3.8 L14 7.6"/>
+            <rect x="4" y="7.6" width="16" height="12.4" rx="3.5"/>
+            <path d="M2 13.5h2M20 13.5h2"/>
+            <g class="cat-eyes" fill="currentColor" stroke="none">
+              <circle class="cat-eye" cx="9" cy="12.6" r="1.5"/>
+              <circle class="cat-eye" cx="15" cy="12.6" r="1.5"/>
+            </g>
+            <path d="M10.2 16.4q.9 1.3 1.8 0q.9 1.3 1.8 0" stroke-width="1.5"/>
+          </svg>
+        </span>
+        <h2 role="status">รอสักครู่<span class="dots" aria-hidden="true"><i>.</i><i>.</i><i>.</i></span></h2>
+      </div>
+      <p class="loading-text">AI กำลังวิเคราะห์ภาพของคุณ</p>
+    </section>
+
+    <!-- ===== มุมมอง 3: ผลลัพธ์ ===== -->
+    <section id="viewResult" hidden>
+
+      <div class="result-first">
+        <div class="ai-head">
+          <span class="ai-badge">
+            <svg class="catbot" viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path class="cat-ear cat-ear-l" d="M5.4 8.4 L5.8 3.8 L10 7.6"/>
+              <path class="cat-ear cat-ear-r" d="M18.6 8.4 L18.2 3.8 L14 7.6"/>
+              <rect x="4" y="7.6" width="16" height="12.4" rx="3.5"/>
+              <path d="M2 13.5h2M20 13.5h2"/>
+              <g class="cat-eyes" fill="currentColor" stroke="none">
+                <circle class="cat-eye" cx="9" cy="12.6" r="1.5"/>
+                <circle class="cat-eye" cx="15" cy="12.6" r="1.5"/>
+              </g>
+              <path d="M10.2 16.4q.9 1.3 1.8 0q.9 1.3 1.8 0" stroke-width="1.5"/>
+            </svg>
+          </span>
+          <h2>ผลการวิเคราะห์แผลกดทับเบื้องต้น</h2>
+        </div>
+
+        <div class="result-top">
+          <img id="resultThumb" class="result-thumb" alt="รูปที่ใช้วิเคราะห์">
+          <div class="result-text">
+            <h3><span id="resultEmoji" aria-hidden="true"></span> <span id="resultName"></span></h3>
+            <p id="resultEn" class="result-en"></p>
+            <p id="resultMeta" class="result-meta"></p>
+          </div>
+        </div>
+
+        <p id="resultSummary" class="result-summary"></p>
+        <p id="lowConfNote" class="low-note" hidden>ระบบไม่ค่อยมั่นใจ ผลอาจคลาดเคลื่อน ลองถ่ายรูปใหม่ให้ชัดขึ้น หรือปรึกษาบุคลากรทางการแพทย์</p>
+        <p class="short-note"><b>ผลเบื้องต้นจาก AI ไม่ใช่การวินิจฉัยของแพทย์</b> ดูรายละเอียดและคำแนะนำด้านล่าง</p>
+      </div>
+
+      <button type="button" id="scrollHint" class="scroll-hint">
+        <span class="scroll-hint-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 5v14"/><path d="M6 13l6 6 6-6"/>
+          </svg>
+        </span>
+        อ่านต่อ เลื่อนลง
+      </button>
+
+      <div id="moreSection" class="more">
+
+        <details class="acc">
+          <summary id="detailTitle">ลักษณะของแผลในระยะนี้</summary>
+          <div class="acc-body"><p id="resultDetail"></p></div>
+        </details>
+
+        <details class="acc">
+          <summary id="todoTitle">สิ่งที่ผู้ดูแลควรทำ</summary>
+          <div class="acc-body"><ul id="resultTodo"></ul></div>
+        </details>
+
+        <p class="notice notice-lg">
+          <span class="notice-icon" aria-hidden="true">i</span>
+          <span><b>ข้อควรทราบ:</b> ระบบนี้เป็นเพียงเครื่องมือสนับสนุนการคัดกรองเบื้องต้นด้วยเทคโนโลยีปัญญาประดิษฐ์เท่านั้น ใช้กับแผลกดทับเท่านั้น ไม่สามารถใช้ทดแทนการวินิจฉัยทางการแพทย์ได้ โปรดปรึกษาแพทย์หรือบุคลากรทางการแพทย์เพื่อรับการตรวจรักษาอย่างถูกต้อง</span>
+        </p>
+
+        <div class="call-row">
+          <a id="callHospital" class="call-btn" href="#" hidden>
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>
+            </svg>
+            <span id="callHospitalText"></span>
+          </a>
+          <a class="call-btn call-emergency" href="tel:1669">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>
+            </svg>
+            โทรฉุกเฉิน 1669
+          </a>
+        </div>
+
+        <button type="button" id="retryBtn" class="retry-btn">ตรวจรูปใหม่</button>
+      </div>
+
+    </section>
+  </main>
+
+  <div class="bottombar" aria-hidden="true"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

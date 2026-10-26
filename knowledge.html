@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ความรู้เรื่องแผลกดทับ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@500;600&family=Sarabun:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-knowledge">
+
+  <header class="kbar">
+    <a href="index.html" class="kback">
+      <span class="kback-icon">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M9 14 4 9l5-5"/>
+          <path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/>
+        </svg>
+      </span>
+      ย้อนกลับ
+    </a>
+  </header>
+
+  <!-- ===== แถบหัวข้อ เลื่อนได้ ===== -->
+  <nav class="menu" id="menu" aria-label="เลือกหัวข้อ">
+    <div class="menu-wrap is-start" id="menuWrap">
+      <button type="button" class="menu-arrow menu-prev" id="menuPrev" aria-label="เลื่อนไปทางซ้าย">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+
+      <ul class="menu-track" id="menuTrack" tabindex="0" aria-label="เลื่อนดูหัวข้อ">
+        <li><a class="menu-card" href="#what"><img src="images/menu-what.jpg" alt="" loading="lazy"><span>แผลกดทับคืออะไร</span></a></li>
+        <li><a class="menu-card" href="#stages"><img src="images/menu-stages.jpg" alt="" loading="lazy"><span>ระยะของแผลกดทับ</span></a></li>
+        <li><a class="menu-card" href="#prevent"><img src="images/menu-prevent.jpg" alt="" loading="lazy"><span>ป้องกันอย่างไร</span></a></li>
+        <li><a class="menu-card" href="#doctor"><img src="images/menu-doctor.jpg" alt="" loading="lazy"><span>ควรพบแพทย์เมื่อไหร่</span></a></li>
+        <li><a class="menu-card" href="#contact"><img src="images/menu-contact.jpg" alt="" loading="lazy"><span>ติดต่อโรงพยาบาล</span></a></li>
+      </ul>
+
+      <button type="button" class="menu-arrow menu-next" id="menuNext" aria-label="เลื่อนไปทางขวา">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+
+      <!-- แถบเลื่อนสีเทา (ลากได้ คลิกได้) -->
+      <div class="menu-bar" id="menuBar" aria-hidden="true">
+        <div class="menu-thumb" id="menuThumb"></div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="kcontent">
+
+    <h1>แผลกดทับ (Pressure Injury)</h1>
+
+    <p class="notice">
+      <span class="notice-icon" aria-hidden="true">i</span>
+      <span>ให้ความรู้ทั่วไป ไม่ใช่การวินิจฉัยโรค</span>
+    </p>
+
+    <!-- ===== 1. แผลกดทับคืออะไร ===== -->
+    <section class="ksection" id="what">
+      <h2>แผลกดทับคืออะไร</h2>
+      <p>
+        แผลกดทับคือผิวหนังและเนื้อเยื่อที่ถูกกดทับนานเกินไป จนเลือดไปเลี้ยงไม่พอ
+        ผิวหนังจึงเสียหายหรือกลายเป็นแผล สาเหตุเกิดจากแรงกดทับร่วมกับแรงเสียดสีหรือแรงเฉือน
+        โดยเฉพาะบริเวณที่มีปุ่มกระดูกอยู่ใกล้ผิวหนัง ซึ่งทำให้หลอดเลือดฝอยตีบตัน
+        เลือดไม่สามารถไหลเวียนเลี้ยงเนื้อเยื่อได้ ส่งผลให้เนื้อเยื่อขาดออกซิเจนและสารอาหาร
+        จนเซลล์ตายและเกิดเป็นแผลขึ้นในที่สุด
+      </p>
+      <p>
+        ผิวหนังยังไม่แตกก็นับว่าเป็นแผลกดทับได้ จึงใช้คำว่า "การบาดเจ็บ" (Injury)
+        ตามที่วงการแพทย์เปลี่ยนมาใช้ตั้งแต่ปี 2016
+      </p>
+
+      <h3>ใครเสี่ยงบ้าง</h3>
+      <ul>
+        <li>ผู้ป่วยติดเตียง และผู้สูงอายุ</li>
+        <li>ผู้ที่ขยับตัวเองไม่ได้ เช่น อัมพาต</li>
+        <li>ผู้ที่ขาดสารอาหาร</li>
+        <li>ผู้ที่กลั้นปัสสาวะหรืออุจจาระไม่ได้</li>
+        <li>ผู้ที่ผิวบอบบางหรือชื้นจากเหงื่อ ไข้ หรือผ้าอ้อม</li>
+      </ul>
+
+      <h3>พบบ่อยตรงไหน</h3>
+      <ul>
+        <li>ก้นกบและก้น</li>
+        <li>สะโพก</li>
+        <li>ส้นเท้าและข้อเท้า</li>
+        <li>ข้อศอก</li>
+        <li>ไหล่และหลัง</li>
+        <li>ผิวใต้สายหรืออุปกรณ์ทางการแพทย์</li>
+      </ul>
+
+      <h3>สัญญาณเตือนแรกเริ่ม</h3>
+      <ul>
+        <li>มีรอยแดงหรือรอยคล้ำ ที่ลดการกดทับแล้ว 30 นาทียังไม่ดีขึ้น</li>
+        <li>ใช้นิ้วกดแล้วสีไม่จางลง</li>
+        <li>ผิวแตก เป็นตุ่ม หรือลอก</li>
+        <li>ผิวตรงนั้นเจ็บ อุ่น เย็น แข็ง หรือนุ่มกว่าผิวรอบๆ</li>
+        <li>ผิวสีเข้มอาจเห็นสีแดงไม่ชัด ให้เทียบกับผิวบริเวณข้างเคียง</li>
+      </ul>
+    </section>
+
+    <!-- ===== 2. ระยะของแผลกดทับ ===== -->
+    <section class="ksection" id="stages">
+      <h2>ระยะของแผลกดทับ</h2>
+      <p>แบ่งเป็น 4 ระยะ ยิ่งระยะสูงยิ่งลึกและรุนแรง</p>
+
+      <article class="stage">
+        <h3>ระยะที่ 1</h3>
+        <ul>
+          <li>ผิวยังไม่เป็นแผล</li>
+          <li>มีรอยแดงหรือรอยคล้ำที่กดแล้วไม่จาง</li>
+          <li>ถ้าสีออกม่วงหรือแดงเข้มมาก ให้พยาบาลตรวจ เพราะอาจเป็นการบาดเจ็บชั้นลึก</li>
+        </ul>
+        <details class="photo">
+          <summary>ดูตัวอย่างภาพ (ภาพแผลจริง)</summary>
+          <div class="photo-body">
+            <div class="photo-grid">
+              <figure><img src="images/stage1-a.jpg" alt="ตัวอย่างรอยแดงบนผิวหนังที่ยังไม่เป็นแผลเปิด (ระยะที่ 1)" width="400" height="400" loading="lazy"></figure>
+              <figure><img src="images/stage1-b.jpg" alt="ตัวอย่างรอยคล้ำบนผิวสีเข้ม (ระยะที่ 1)" width="400" height="400" loading="lazy"></figure>
+            </div>
+            <p class="photo-note">ตัวอย่างเท่านั้น ลักษณะจริงต่างกันตามตำแหน่งและสีผิว<br>ที่มาภาพ: [ใส่ที่มา]</p>
+          </div>
+        </details>
+      </article>
+
+      <article class="stage">
+        <h3>ระยะที่ 2</h3>
+        <ul>
+          <li>ผิวชั้นนอกหลุด เป็นแผลตื้น</li>
+          <li>ก้นแผลสีชมพูหรือแดง ชื้น</li>
+          <li>ยังไม่เห็นชั้นไขมัน</li>
+          <li>อาจเป็นตุ่มน้ำใส</li>
+        </ul>
+        <details class="photo">
+          <summary>ดูตัวอย่างภาพ (ภาพแผลจริง)</summary>
+          <div class="photo-body">
+            <div class="photo-grid">
+              <figure><img src="images/stage2-a.jpg" alt="ตัวอย่างแผลตื้นสีชมพูแดง (ระยะที่ 2)" width="400" height="400" loading="lazy"></figure>
+              <figure><img src="images/stage2-b.jpg" alt="ตัวอย่างแผลตื้นหรือตุ่มน้ำ (ระยะที่ 2)" width="400" height="400" loading="lazy"></figure>
+            </div>
+            <p class="photo-note">ตัวอย่างเท่านั้น ลักษณะจริงต่างกันตามตำแหน่งและสีผิว<br>ที่มาภาพ: [ใส่ที่มา]</p>
+          </div>
+        </details>
+      </article>
+
+      <article class="stage">
+        <h3>ระยะที่ 3</h3>
+        <ul>
+          <li>แผลเปิดกว้างและลึกขึ้น</li>
+          <li>มองเห็นชั้นไขมันใต้ผิวหนัง</li>
+          <li>อาจเป็นหลุม</li>
+          <li>ยังไม่ถึงกล้ามเนื้อ เอ็น หรือกระดูก</li>
+        </ul>
+        <details class="photo">
+          <summary>ดูตัวอย่างภาพ (ภาพแผลจริง)</summary>
+          <div class="photo-body">
+            <div class="photo-grid">
+              <figure><img src="images/stage3-a.jpg" alt="ตัวอย่างแผลเปิดลึกเห็นชั้นไขมัน (ระยะที่ 3)" width="400" height="400" loading="lazy"></figure>
+              <figure><img src="images/stage3-b.jpg" alt="ตัวอย่างแผลเปิดลึก (ระยะที่ 3)" width="400" height="400" loading="lazy"></figure>
+            </div>
+            <p class="photo-note">ตัวอย่างเท่านั้น ลักษณะจริงต่างกันตามตำแหน่งและสีผิว<br>ที่มาภาพ: [ใส่ที่มา]</p>
+          </div>
+        </details>
+      </article>
+
+      <article class="stage">
+        <h3>ระยะที่ 4</h3>
+        <ul>
+          <li>แผลลึกมาก</li>
+          <li>เห็นหรือคลำถึงกล้ามเนื้อ เอ็น หรือกระดูก</li>
+          <li>มักมีเนื้อตายสีดำหรือเหลืองคลุม</li>
+          <li>อาจมีโพรงลึกใต้ขอบแผล</li>
+          <li>เสี่ยงติดเชื้อรุนแรง</li>
+        </ul>
+        <details class="photo">
+          <summary>ดูตัวอย่างภาพ (ภาพแผลจริง)</summary>
+          <div class="photo-body">
+            <div class="photo-grid">
+              <figure><img src="images/stage4-a.jpg" alt="ตัวอย่างแผลลึกมากมีเนื้อตายสีดำ (ระยะที่ 4)" width="400" height="400" loading="lazy"></figure>
+              <figure><img src="images/stage4-b.jpg" alt="ตัวอย่างแผลลึกมากเห็นเนื้อเยื่อชั้นลึก (ระยะที่ 4)" width="400" height="400" loading="lazy"></figure>
+            </div>
+            <p class="photo-note">ตัวอย่างเท่านั้น ลักษณะจริงต่างกันตามตำแหน่งและสีผิว<br>ที่มาภาพ: [ใส่ที่มา]</p>
+          </div>
+        </details>
+      </article>
+
+      <article class="stage">
+        <h3>ประเมินระยะไม่ได้</h3>
+        <ul>
+          <li>มีเนื้อตายหรือสะเก็ดดำคลุมก้นแผล มองไม่เห็นความลึก</li>
+          <li>ห้ามแกะหรือลอกเนื้อตายเอง</li>
+          <li>ต้องให้แพทย์หรือพยาบาลประเมิน</li>
+        </ul>
+        <details class="photo">
+          <summary>ดูตัวอย่างภาพ (ภาพแผลจริง)</summary>
+          <div class="photo-body">
+            <div class="photo-grid">
+              <figure><img src="images/unstageable-a.jpg" alt="ตัวอย่างแผลที่มีเนื้อตายคลุมจนมองไม่เห็นความลึก" width="400" height="400" loading="lazy"></figure>
+              <figure><img src="images/unstageable-b.jpg" alt="ตัวอย่างแผลที่มีสะเก็ดสีดำคลุมก้นแผล" width="400" height="400" loading="lazy"></figure>
+            </div>
+            <p class="photo-note">ตัวอย่างเท่านั้น ลักษณะจริงต่างกันตามตำแหน่งและสีผิว<br>ที่มาภาพ: [ใส่ที่มา]</p>
+          </div>
+        </details>
+      </article>
+    </section>
+
+    <!-- ===== 3. ป้องกันอย่างไร ===== -->
+    <section class="ksection" id="prevent">
+      <h2>ป้องกันได้อย่างไร</h2>
+      <ul>
+        <li>พลิกตัวอย่างน้อยทุก 2 ชั่วโมง หรือถี่กว่านั้นตามที่พยาบาลแนะนำ</li>
+        <li>ตะแคงเอียงประมาณ 30 องศา ไม่ตะแคงตั้งตรง และไม่ยกหัวเตียงสูงเกิน 30 องศา เว้นแต่แพทย์สั่ง</li>
+        <li>ยกตัวผู้ป่วยทุกครั้งที่เปลี่ยนท่า ห้ามลากตัวไปบนที่นอน</li>
+        <li>หนุนปุ่มกระดูกและน่อง ให้ส้นเท้าลอย ห้ามนอนทับจุดที่มีรอยแดง</li>
+        <li>ใช้เบาะโฟมหรือเจล ช่วยกระจายแรงกดทับ ห้ามใช้ห่วงยางหรือเบาะโดนัท</li>
+        <li>ตรวจผิวหนังทุกวัน ทุกครั้งที่พลิกตัว และใต้สายหรืออุปกรณ์ รักษาความสะอาดและแห้ง ห้ามนวดหรือถูแรงๆ</li>
+        <li>ให้อาหารที่มีโปรตีนและสารอาหารครบถ้วน เพื่อบำรุงผิวหนัง</li>
+      </ul>
+    </section>
+
+    <!-- ===== 4. ควรพบแพทย์เมื่อไหร่ ===== -->
+    <section class="ksection" id="doctor">
+      <h2>ควรพบแพทย์เมื่อไหร่</h2>
+      <p>ควรไปพบแพทย์หรือพยาบาล เมื่อพบอาการต่อไปนี้</p>
+      <ul>
+        <li>ผิวเริ่มเป็นแผลเปิดหรือเป็นตุ่ม</li>
+        <li>รอยแดงไม่ดีขึ้นหลังลดการกดทับแล้ว</li>
+        <li>แผลลึกขึ้นหรือกว้างขึ้น</li>
+        <li>มีเนื้อตายสีดำหรือเหลือง</li>
+        <li>แผลมีหนอง มีกลิ่นเหม็น หรือบวมแดงร้อนรอบแผล</li>
+        <li>ผู้ป่วยมีไข้ หรือปวดแผลมากขึ้น</li>
+      </ul>
+      <p><b>ถ้าอาการรุนแรงหรือฉุกเฉิน โทร <a class="inline-tel" href="tel:1669">1669</a></b></p>
+    </section>
+
+    <!-- ===== 5. ติดต่อโรงพยาบาล ===== -->
+    <section class="ksection" id="contact">
+      <h2>ช่องทางติดต่อ</h2>
+      <ul>
+        <li>โรงพยาบาลหนองคาย: <span class="pending">รอใส่</span></li>
+        <li>รพ.สต. ใกล้บ้าน: <span class="pending">รอใส่</span></li>
+        <li>อสม. ในพื้นที่: <span class="pending">รอใส่</span></li>
+        <li>ฉุกเฉิน: 1669</li>
+      </ul>
+      <div class="call-row">
+        <a class="call-btn call-emergency" href="tel:1669">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>
+          </svg>
+          โทรฉุกเฉิน 1669
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== ข้อควรทราบ ===== -->
+    <div class="notice notice-full">
+      <span class="notice-icon" aria-hidden="true">i</span>
+      <div>
+        <p><b>ข้อควรทราบ</b></p>
+        <ul>
+          <li>เว็บนี้เป็นเครื่องมือช่วยคัดกรองเบื้องต้นเท่านั้น</li>
+          <li>ใช้กับแผลกดทับเท่านั้น ไม่ใช้กับแผลไฟไหม้ แผลผ่าตัด หรือแผลเบาหวาน</li>
+          <li>AI แยกได้เฉพาะ ระยะ 1-4 ผิวปกติ และประเมินระยะไม่ได้</li>
+          <li>AI ไม่ได้แยกการบาดเจ็บชั้นลึก แผลจากอุปกรณ์ และแผลที่เยื่อบุ</li>
+          <li>ผลจาก AI ไม่ใช่การวินิจฉัยของแพทย์ ไม่ใช้แทนการตรวจโดยบุคลากรทางการแพทย์</li>
+          <li>ถ้ากังวลหรือแผลดูแย่ลง ให้ปรึกษาแพทย์หรือพยาบาล</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ===== แหล่งอ้างอิง ===== -->
+    <section class="refs" id="refs">
+      <h2>แหล่งอ้างอิง</h2>
+      <ul>
+        <li>EPUAP/NPIAP/PPPIA (2025). Prevention and Treatment of Pressure Ulcers/Injuries: Clinical Practice Guideline. The International Guideline (ฉบับที่ 4)</li>
+        <li>NPUAP (2016). Revised Pressure Injury Staging System</li>
+        <li>คณะแพทยศาสตร์ มหาวิทยาลัยสงขลานครินทร์ (2565)</li>
+        <li>พรเทพ สิริมหาไชยกุล และ สืบสิน จิรวรพัฒน์ (2564)</li>
+        <li>ภิญโญ อุทธิยา (2566)</li>
+      </ul>
+    </section>
+
+    <!-- ===== ปุ่มกลับไปเลือกหัวข้อ (อยู่ล่างสุดที่เดียว) ===== -->
+    <div class="to-menu-wrap">
+      <a class="to-menu" href="#menu">↑ กลับไปเลือกหัวข้อ</a>
+    </div>
+
+  </main>
+
+  <footer class="kfoot">
+    <p>จัดทำโดยนักเรียนชั้น ม.5/14 โรงเรียนปทุมเทพวิทยาคาร ปีการศึกษา 2569</p>
+    <p>เครดิตรูปภาพ: [ใส่ที่มาของรูป]</p>
+  </footer>
+
+  <script src="knowledge.js"></script>
+</body>
+</html>
